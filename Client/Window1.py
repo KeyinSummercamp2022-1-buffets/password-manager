@@ -159,7 +159,14 @@ Welcome = Text(
     font="Comic Sans MS",
 )
 
-Welcome_PT2 = Text(app, "If you're a new Monke, sign up below:", grid=[0, 7], align="left", size=15, font="Comic Sans MS")
+Welcome_PT2 = Text(
+    app,
+    "If you're a new Monke, sign up below:",
+    grid=[0, 7],
+    align="left",
+    size=15,
+    font="Comic Sans MS",
+)
 
 
 Sign_Up = PushButton(
@@ -214,13 +221,18 @@ Confirm_PassBox.bg = "coral2"
 
 def confirm_button():
     def match():
-        sign_up_window.warn("Uh oh!", "Monke Brain Go Panic! Your answers don't seem to match.")
+        sign_up_window.warn(
+            "Uh oh!", "Monke Brain Go Panic! Your answers don't seem to match."
+        )
 
     def no_username():
         sign_up_window.warn("Oh uh!", "Monke Brain Go Panic! Please fill in all boxes.")
 
     def too_short():
-        sign_up_window.warn("Uh oh!", "Monke Brain Go Panic! Please enter a password that is 12 characters.")
+        sign_up_window.warn(
+            "Uh oh!",
+            "Monke Brain Go Panic! Please enter a password that is 12 characters.",
+        )
 
     def correct_password():
         signup()
@@ -230,14 +242,14 @@ def confirm_button():
         or len(New_PassBox.value) == 0
         or len(Confirm_PassBox.value) == 0
     ):
-        Confirm.when_clicked = no_username
+        no_username()
     elif len(New_PassBox.value) < 12 or len(Confirm_PassBox.value) < 12:
-        Confirm.when_clicked = too_short
+        too_short()
     else:
         if New_PassBox.value != Confirm_PassBox.value:
-            Confirm.when_clicked = match
+            match()
         elif New_PassBox.value == Confirm_PassBox.value:
-            Confirm.when_clicked = correct_password
+            correct_password()
 
 
 Back = PushButton(
@@ -355,13 +367,12 @@ def get_passwords():
         Password_window.warn("Invalid Lenght", "That was not a number")
         return
 
-    password = ""
+    new_password = ""
     for _ in range(length):
-        password += random.choice(password_possibilities)
-        password = str(password)
+        new_password += random.choice(password_possibilities)
         printpass = TextBox(
             Password_window,
-            text=password,
+            text=new_password,
             width=20,
             height=10,
             grid=[0, 10],
