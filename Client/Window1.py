@@ -111,7 +111,8 @@ def login():
 
 ##  Window 1  ##
 
-app = App(title="Company Name", layout="grid", bg="sky blue")
+app = App(title="MonkePass", layout="grid", bg="sky blue")
+
 
 sign_up_window = Window(app, title="Sign Up", layout="grid", bg="MistyRose3")
 
@@ -151,12 +152,16 @@ Blank = Text(app, text="        ", grid=[0, 5], align="left", size=20)
 
 Welcome = Text(
     app,
-    text="New to Company? Welcome, sign up below:",
+    text="Welcome to the jungle!",
     grid=[0, 6],
     align="left",
     size=15,
     font="Comic Sans MS",
 )
+
+Welcome_PT2 = Text(app, "If you're a new Monke, sign up below:", grid=[0, 7], align="left", size=15, font="Comic Sans MS")
+
+
 Sign_Up = PushButton(
     app,
     text="Sign Up",
@@ -209,13 +214,13 @@ Confirm_PassBox.bg = "coral2"
 
 def confirm_button():
     def match():
-        sign_up_window.warn("Uh oh!", "Your answers don't seem to match.")
+        sign_up_window.warn("Uh oh!", "Monke Brain Go Panic! Your answers don't seem to match.")
 
     def no_username():
-        sign_up_window.warn("Uh oh!", "Please fill in all boxes.")
+        sign_up_window.warn("Oh uh!", "Monke Brain Go Panic! Please fill in all boxes.")
 
     def too_short():
-        sign_up_window.warn("Uh oh!", "Please enter a password that is 12 characters.")
+        sign_up_window.warn("Uh oh!", "Monke Brain Go Panic! Please enter a password that is 12 characters.")
 
     def correct_password():
         signup()
