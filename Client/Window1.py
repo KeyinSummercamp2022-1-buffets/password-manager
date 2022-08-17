@@ -20,6 +20,7 @@ def find_passwords():
 
 
 def open_window():
+    close_login()
     Window.show(sign_up_window)
 
 
@@ -343,7 +344,12 @@ def get_passwords():
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./?!@#$%&(){}1234567890"
     )
 
-    length = int(Password_Length.value)
+    try:
+        length = int(Password_Length.value)
+    except ValueError:
+        Password_window.warn("Invalid Lenght", "That was not a number")
+        return
+
     password = ""
     for _ in range(length):
         password += random.choice(password_possibilities)
@@ -357,6 +363,7 @@ def get_passwords():
             visible=True,
             multiline=True,
         )
+        printpass.text_color = "black"
         printpass.bg = "white"
 
 
